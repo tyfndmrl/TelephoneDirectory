@@ -11,15 +11,15 @@ COPY ["src/TelephoneDirectory.Report/TelephoneDirectory.Report.API/TelephoneDire
 COPY ["src/TelephoneDirectory.Report/TelephoneDirectory.Report.DDD/TelephoneDirectory.Report.DDD.csproj", "src/TelephoneDirectory.Report/TelephoneDirectory.Report.DDD/"]
 COPY ["src/TelephoneDirectory.Report/TelephoneDirectory.Report.DTO/TelephoneDirectory.Report.DTO.csproj", "src/TelephoneDirectory.Report/TelephoneDirectory.Report.DTO/"]
 COPY ["src/TelephoneDirectory.Report/TelephoneDirectory.Report.Service/TelephoneDirectory.Report.Service.csproj", "src/TelephoneDirectory.Report/TelephoneDirectory.Report.Service/"]
-COPY ["src/TelephoneDirectory.Framework/TelephoneDirectory.Repository/TelephoneDirectory.Framework.Repository.csproj", "src/TelephoneDirectory.Framework/TelephoneDirectory.Repository/"]
-COPY ["src/TelephoneDirectory.Framework/TelephoneDirectory.RabbitMQ/TelephoneDirectory.Framework.RabbitMQ.csproj", "src/TelephoneDirectory.Framework/TelephoneDirectory.RabbitMQ/"]
+COPY ["src/TelephoneDirectory.Framework/TelephoneDirectory.Framework.Repository/TelephoneDirectory.Framework.Repository.csproj", "src/TelephoneDirectory.Framework/TelephoneDirectory.Framework.Repository/"]
+COPY ["src/TelephoneDirectory.Framework/TelephoneDirectory.Framework.RabbitMQ/TelephoneDirectory.Framework.RabbitMQ.csproj", "src/TelephoneDirectory.Framework/TelephoneDirectory.Framework.RabbitMQ/"]
 RUN dotnet restore "src/TelephoneDirectory.Report/TelephoneDirectory.Report.API/TelephoneDirectory.Report.API.csproj"
 COPY . .
 WORKDIR "/src/src/TelephoneDirectory.Report/TelephoneDirectory.Report.API"
 RUN dotnet build "TelephoneDirectory.Report.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "TelephoneDirectory.Report.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "TelephoneDirectory.Report.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

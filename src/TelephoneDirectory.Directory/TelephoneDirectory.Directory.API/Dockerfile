@@ -11,7 +11,7 @@ COPY ["src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.API/Telepho
 COPY ["src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.DDD/TelephoneDirectory.Directory.DDD.csproj", "src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.DDD/"]
 COPY ["src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.DTO/TelephoneDirectory.Directory.DTO.csproj", "src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.DTO/"]
 COPY ["src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.Service/TelephoneDirectory.Directory.Service.csproj", "src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.Service/"]
-COPY ["src/TelephoneDirectory.Framework/TelephoneDirectory.Repository/TelephoneDirectory.Framework.Repository.csproj", "src/TelephoneDirectory.Framework/TelephoneDirectory.Repository/"]
+COPY ["src/TelephoneDirectory.Framework/TelephoneDirectory.Framework.Repository/TelephoneDirectory.Framework.Repository.csproj", "src/TelephoneDirectory.Framework/TelephoneDirectory.Repository/"]
 RUN dotnet restore "src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.API/TelephoneDirectory.Directory.API.csproj"
 COPY . .
 WORKDIR "/src/src/TelephoneDirectory.Directory/TelephoneDirectory.Directory.API"
