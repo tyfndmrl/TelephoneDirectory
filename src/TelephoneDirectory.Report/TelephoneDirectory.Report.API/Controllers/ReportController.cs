@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TelephoneDirectory.Framework.RabbitMQ.Publishers.Interfaces;
 using TelephoneDirectory.Report.DTO.Dto.Report.RequestModels;
 using TelephoneDirectory.Report.DTO.Dto.Report.ResponseModels;
 using TelephoneDirectory.Report.DTO.Models.Results;
@@ -14,11 +13,9 @@ namespace TelephoneDirectory.Directory.API.Controllers
     public class ReportController : ControllerBase
     {
         private readonly IReportService _reportService;
-        private readonly IPublisher _publisher;
-        public ReportController(IReportService reportService, IPublisher publisher)
+        public ReportController(IReportService reportService)
         {
             _reportService = reportService;
-            _publisher = publisher;
         }
 
         [HttpPost]
@@ -27,9 +24,6 @@ namespace TelephoneDirectory.Directory.API.Controllers
             var response = new ResponseModel<ReportResponseModel>();
             var result = await _reportService.AddAsync<ReportRequestModel, ReportResponseModel>(model);
             response.Data = result;
-
-            await _publisher.SendAsync("report-tracker.directory-report.queue", result);
-
             return CreatedAtAction("GetById", new { id = result.Id }, response);
         }
 

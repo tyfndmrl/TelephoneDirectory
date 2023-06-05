@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TelephoneDirectory.Report.DTO.Dto.Report.ConsumerModels;
 using TelephoneDirectory.Report.DTO.Dto.Report.RequestModels;
 using TelephoneDirectory.Report.DTO.Dto.Report.ResponseModels;
 
@@ -10,6 +11,7 @@ namespace TelephoneDirectory.Report.DTO.Dto.Report
         {
             CreateMap<ReportRequestModel, DDD.Entities.ReportEntity>();
             CreateMap<DDD.Entities.ReportEntity, ReportResponseModel>();
+            CreateMap<ReportResponseModel, DirectoryLocationReportConsumerModel>();
         }
     }
 }

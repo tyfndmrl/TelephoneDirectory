@@ -66,48 +66,55 @@ namespace TelephoneDirectory.Directory.API.Controllers
             return Ok(new ResponseModel(true));
         }
 
-        [HttpPost("{directoryId}/Contact")]
-        public async Task<IActionResult> ContactPost(Guid directoryId, ContactRequestModel model)
+        [HttpGet("DirectoryLocationReport")]
+        public async Task<IActionResult> DirectoryLocationReport()
         {
-            var response = new ResponseModel<ContactResponseModel>();
-            var result = await _contactService.AddAsync<ContactRequestModel, ContactResponseModel>(model);
-            response.Data = result;
-
-            return CreatedAtAction("ContactGetById", new { directoryId, contactId = result.Id }, response);
+            //Todo: Report service and response service . . .
+            return Ok();
         }
 
-        [HttpPut("{directoryId}/Contact/{contactId}")]
-        public async Task<IActionResult> ContactPut(Guid directoryId, Guid contactId, ContactRequestModel model)
-        {
-            var response = new ResponseModel<ContactResponseModel>();
-            var result = await _contactService.UpdateAsync<ContactRequestModel, ContactResponseModel>(contactId, model);
-            response.Data = result;
-            return Ok(response);
-        }
+        //[HttpPost("{directoryId}/Contact")]
+        //public async Task<IActionResult> ContactPost(Guid directoryId, ContactRequestModel model)
+        //{
+        //    var response = new ResponseModel<ContactResponseModel>();
+        //    var result = await _contactService.AddAsync<ContactRequestModel, ContactResponseModel>(model);
+        //    response.Data = result;
 
-        [HttpGet("{directoryId}/Contact/{contactId}")]
-        public async Task<IActionResult> ContactGetById(Guid directoryId, Guid contactId)
-        {
-            var response = new ResponseModel<ContactResponseModel>();
-            var result = await _contactService.GetByIdAsync<ContactResponseModel>(contactId);
-            response.Data = result;
-            return Ok(response);
-        }
+        //    return CreatedAtAction("ContactGetById", new { directoryId, contactId = result.Id }, response);
+        //}
 
-        [HttpGet("{directoryId}/Contact")]
-        public async Task<IActionResult> ContactGetAll()
-        {
-            var response = new ResponseModel<IEnumerable<ContactResponseModel>>();
-            var result = await _contactService.GetAllAsync<ContactResponseModel>();
-            response.Data = result;
-            return Ok(response);
-        }
+        //[HttpPut("{directoryId}/Contact/{contactId}")]
+        //public async Task<IActionResult> ContactPut(Guid directoryId, Guid contactId, ContactRequestModel model)
+        //{
+        //    var response = new ResponseModel<ContactResponseModel>();
+        //    var result = await _contactService.UpdateAsync<ContactRequestModel, ContactResponseModel>(contactId, model);
+        //    response.Data = result;
+        //    return Ok(response);
+        //}
 
-        [HttpDelete("{directoryId}/Contact/{contactId}")]
-        public async Task<IActionResult> ContactDelete(Guid directoryId, Guid contactId)
-        {
-            await _contactService.DeleteAsync(contactId);
-            return Ok(new ResponseModel(true));
-        }
+        //[HttpGet("{directoryId}/Contact/{contactId}")]
+        //public async Task<IActionResult> ContactGetById(Guid directoryId, Guid contactId)
+        //{
+        //    var response = new ResponseModel<ContactResponseModel>();
+        //    var result = await _contactService.GetByIdAsync<ContactResponseModel>(contactId);
+        //    response.Data = result;
+        //    return Ok(response);
+        //}
+
+        //[HttpGet("{directoryId}/Contact")]
+        //public async Task<IActionResult> ContactGetAll()
+        //{
+        //    var response = new ResponseModel<IEnumerable<ContactResponseModel>>();
+        //    var result = await _contactService.GetAllAsync<ContactResponseModel>();
+        //    response.Data = result;
+        //    return Ok(response);
+        //}
+
+        //[HttpDelete("{directoryId}/Contact/{contactId}")]
+        //public async Task<IActionResult> ContactDelete(Guid directoryId, Guid contactId)
+        //{
+        //    await _contactService.DeleteAsync(contactId);
+        //    return Ok(new ResponseModel(true));
+        //}
     }
 }

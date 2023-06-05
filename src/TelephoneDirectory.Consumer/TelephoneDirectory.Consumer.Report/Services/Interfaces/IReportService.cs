@@ -1,8 +1,8 @@
 ﻿using TelephoneDirectory.Consumer.Report.Models.Report;
 
-namespace TelephoneDirectory.Consumer.Report.Consumers.Interfaces
+namespace TelephoneDirectory.Consumer.Report.Services.Interfaces
 {
-    public interface IReportTrackerConsumer
+    public interface IReportService
     {
         Task DirectoryLocationReport(DirectoryLocationReportConsumerModel model);
     }

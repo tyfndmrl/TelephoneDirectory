@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TelephoneDirectory.Framework\TelephoneDirectory.Framework.RabbitMQ\TelephoneDirectory.Framework.RabbitMQ.csproj" />
     <ProjectReference Include="..\TelephoneDirectory.Report.Service\TelephoneDirectory.Report.Service.csproj" />
   </ItemGroup>
 

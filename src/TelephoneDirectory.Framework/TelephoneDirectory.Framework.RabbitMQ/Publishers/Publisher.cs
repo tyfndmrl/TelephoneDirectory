@@ -1,5 +1,4 @@
 ﻿using DotNetCore.CAP;
-using TelephoneDirectory.Framework.RabbitMQ.Publishers.Commands;
 using TelephoneDirectory.Framework.RabbitMQ.Publishers.Interfaces;
 
 namespace TelephoneDirectory.Framework.RabbitMQ.Publishers

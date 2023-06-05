@@ -1,6 +1,4 @@
-﻿using TelephoneDirectory.Framework.RabbitMQ.Publishers.Commands;
-
-namespace TelephoneDirectory.Framework.RabbitMQ.Publishers.Interfaces
+﻿namespace TelephoneDirectory.Framework.RabbitMQ.Publishers.Interfaces
 {
     public interface IPublisher
     {

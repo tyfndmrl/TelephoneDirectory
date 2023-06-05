@@ -1,18 +1,23 @@
 ﻿using DotNetCore.CAP;
-using System.Diagnostics;
 using TelephoneDirectory.Consumer.Report.Consumers.Interfaces;
 using TelephoneDirectory.Consumer.Report.Models.Report;
+using TelephoneDirectory.Consumer.Report.Services.Interfaces;
 using TelephoneDirectory.Framework.RabbitMQ.Attributes;
 
 namespace TelephoneDirectory.Consumer.Report.Consumers
 {
     public class ReportTrackerConsumer : IReportTrackerConsumer, ICapSubscribe
     {
-        [Subscribe("report-tracker.directory-report.queue")]
-        public Task DirectoryReport(DirectoryReportConsumerModel model)
+        private readonly IReportService _reportService;
+        public ReportTrackerConsumer(IReportService reportService)
         {
-            Debug.WriteLine("test denemesi");
-            throw new NotImplementedException();
+            _reportService = reportService;
+        }
+
+        [Subscribe("report-tracker.directory-location-report.queue")]
+        public async Task DirectoryLocationReport(DirectoryLocationReportConsumerModel model)
+        {
+            await _reportService.DirectoryLocationReport(model);
         }
     }
 }
